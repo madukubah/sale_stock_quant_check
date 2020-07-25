@@ -65,6 +65,6 @@ class SaleOrderLine(models.Model):
 
             _logger.warning( qty )
             _logger.warning( stock_qty_total )
-            # if( stock_qty_total < qty ):
-            #     self.product_uom_qty = 0
-            #     raise UserError(_("not enough stock in selected warehouse") )
+            if( stock_qty_total < qty ):
+                self.product_uom_qty = 0
+                raise UserError(_("not enough stock in selected warehouse") )
