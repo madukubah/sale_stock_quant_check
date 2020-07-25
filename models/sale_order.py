@@ -29,7 +29,7 @@ class SaleOrderLine(models.Model):
     location_id = fields.Many2one(
             'stock.location', 'Origin Location', related="order_id.location_id") 
     
-    product_stocks = fields.One2many('product.stock', inverse_name='order_line_id', string='Product Stocks', copy=True )
+    product_stocks = fields.One2many('product.stock', inverse_name='order_line_id', string='Product Stocks', copy=True, readonly=True )
 
     @api.multi
     @api.onchange('product_id')
@@ -51,20 +51,20 @@ class SaleOrderLine(models.Model):
             product_stocks.append(ProductStockSudo.create(st_values).id)
             self.product_stocks = product_stocks
 
-    @api.onchange('product_uom', 'product_uom_qty')
-    def product_uom_change(self):
-        super(SaleOrderLine, self).product_uom_change()
-        StockQuantSudo = self.env['stock.quant'].sudo()
-        _logger.warning( "product_uom_change" )
-        _logger.warning( "product_uom_change" )
+    # @api.onchange('product_uom', 'product_uom_qty')
+    # def product_uom_change(self):
+    #     super(SaleOrderLine, self).product_uom_change()
+    #     StockQuantSudo = self.env['stock.quant'].sudo()
+    #     _logger.warning( "product_uom_change" )
+    #     _logger.warning( "product_uom_change" )
 
-        if( self.location_id and self.product_id ) :
-            qty = self.product_uom_qty
-            stock_quants = StockQuantSudo.search([ ("product_id", '=', self.product_id.id ), ("location_id", '=', self.location_id.id ) ])
-            stock_qty_total = sum([ stock_quant.qty for stock_quant in stock_quants ])
+    #     if( self.location_id and self.product_id ) :
+    #         qty = self.product_uom_qty
+    #         stock_quants = StockQuantSudo.search([ ("product_id", '=', self.product_id.id ), ("location_id", '=', self.location_id.id ) ])
+    #         stock_qty_total = sum([ stock_quant.qty for stock_quant in stock_quants ])
 
-            _logger.warning( qty )
-            _logger.warning( stock_qty_total )
-            if( stock_qty_total < qty ):
-                self.product_uom_qty = 0
-                raise UserError(_("not enough stock in selected warehouse") )
+    #         _logger.warning( qty )
+    #         _logger.warning( stock_qty_total )
+    #         if( stock_qty_total < qty ):
+    #             self.product_uom_qty = 0
+    #             raise UserError(_("not enough stock in selected warehouse") )
