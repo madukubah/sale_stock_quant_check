@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'Sale Mining',
+    'name': 'Sale Stock Quant Check',
     'version': '1.0',
     'author': 'Technoindo.com',
     'category': 'Sales Management',
     'depends': [
-        'sale_contract',
-        'shipping',
-        'sale_qaqc',
+        'sale',
+        'stock',
+        'sale_stock',
     ],
     'data': [
-        'views/menu.xml',
-        'views/qaqc_coa.xml',
+        # 'views/menu.xml',
+        'views/sale_view.xml',
     ],
     'qweb': [
         # 'static/src/xml/cashback_templates.xml',
