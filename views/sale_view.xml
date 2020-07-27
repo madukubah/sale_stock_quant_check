@@ -7,6 +7,8 @@
         <field name="priority" eval="8"/>
         <field name="arch" type="xml">
             <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/form/field[@name='name']" position="after">
+                <!-- <label for="location_id"/>
+                <field name="location_id"/>  -->
                 <label for="product_stocks"/>
                 <field name="product_stocks"/>
             </xpath> 
