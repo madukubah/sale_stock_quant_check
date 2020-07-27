@@ -13,6 +13,7 @@
     'data': [
         # 'views/menu.xml',
         'views/sale_view.xml',
+        'security/ir.model.access.csv',
     ],
     'qweb': [
         # 'static/src/xml/cashback_templates.xml',
