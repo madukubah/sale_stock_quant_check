@@ -30,7 +30,7 @@ class SaleOrderLine(models.Model):
     location_id = fields.Many2one(
             'stock.location', 'Stock Location', related="order_id.location_id", readonly=True, store=True ) 
     
-    product_stocks = fields.Float( string='Product Stocks in Selected Warehouse ', copy=True, readonly=True, default=0, store=True )
+    product_stocks = fields.Float( string='Stok Produk Pada Gudang Yang Di Pilih = ', copy=True, readonly=True, default=0, store=True )
     # product_stocks = fields.One2many('product.stock', inverse_name='order_line_id', string='Product Stocks', copy=True, readonly=True )
 
     # def set_location(self):

@@ -10,7 +10,7 @@
                 <!-- <label for="location_id"/>
                 <field name="location_id"/>  -->
                 <label for="product_stocks"/>
-                <field name="product_stocks"/>
+                <field name="product_stocks"/> 
             </xpath> 
         </field>
     </record>
